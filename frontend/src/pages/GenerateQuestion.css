@@ -40,6 +40,13 @@ html {
     padding: 1rem;
 }
 
+.num__inp {
+    font-size: 2rem;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 1rem;
+}
+
+
 ::placeholder {
     font-size: 2rem;
 }
