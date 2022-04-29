@@ -14,6 +14,9 @@ from collections import namedtuple
 from sklearn.metrics.pairwise import cosine_similarity
 import networkx as nx
 import spacy
+## Importing SupWSD modules
+# from it.si3p.supwsd.api import SupWSD
+# from it.si3p.supwsd.config import Model, Language
 nltk.download('punkt')
 nltk.download('wordnet')
 MAX_SEQ_LENGTH = 128
@@ -115,21 +118,19 @@ def _truncate_seq_pair(tokens_a, tokens_b, max_length):
         else:
             tokens_b.pop()
 
-
-#Load Bert Model
-GlossSelectionRecord = namedtuple('GlossSelectionRecord', ['guid','sentence', 'sense_keys', 'glosses','targets'])
+#Loading BERT WSD Model
 model_dir = './model/bert_base-augmented-batch_size=128-lr=2e-5-max_gloss=6'
 model = BertWSD.from_pretrained(model_dir)
 tokenizer = BertTokenizer.from_pretrained(model_dir)
-#########
-
+GlossSelectionRecord = namedtuple('GlossSelectionRecord', ['guid','sentence', 'sense_keys', 'glosses','targets'])
 
 def get_sense(sent):
-        # add new special token
+    # add new special token
     #if '[TGT]' not in tokenizer.additional_special_tokens:
     #    tokenizer.add_special_tokens({'additional_special_tokens': ['[TGT]']})
     #    assert '[TGT]' in tokenizer.additional_special_tokens
     #    model.resize_token_embeddings(len(tokenizer))
+
     model.to(DEVICE)
     model.eval()
 
@@ -181,8 +182,6 @@ def get_sense(sent):
 
      
 def supwsd_api_get_sense(sent):
-    from it.si3p.supwsd.api import SupWSD
-    from it.si3p.supwsd.config import Model, Language
     for result in SupWSD('SM9XaFlRF9').disambiguate(sent, Model.SEMCOR_EXAMPLES_GLOSSES_ONESEC_OMSTI, Language.EN):
         token=result.token
         # print('Word: {}\tLemma: {}\tPOS: {}\tSense: {}'.format(token.word, token.lemma, token.pos, result.sense()))
@@ -215,12 +214,14 @@ def get_question(sentence, answer):
 
 
 def getMCQ(sent):
-    #calling bert wsd
+    ## Method 1: BERT WSD
+    ## calling bert wsd
     sentence_for_bert = sent.replace('**', ' [TGT] ')
     sentence_for_bert = ' '.join(sentence_for_bert.split())
     (sense, meaning, answer) = get_sense(sentence_for_bert)
 
-    #calling supwsd api
+    ## Method 2: SupWSD API    
+    ## calling supwsd api
     # sentence_for_supwsd_api = sent.replace('**', SupWSD.SENSE_TAG)
     # sentence_for_supwsd_api = ' '.join(sentence_for_supwsd_api.split())
     # (sense, meaning, answer) = supwsd_api_get_sense(sentence_for_supwsd_api)
@@ -340,8 +341,8 @@ def rank_sentence(clean_sentences):
     return ranked_sentences
 
 
-def get_keyword(sentence):
-    doc = nlp(sentence)
+def get_keyword(sentence,model):
+    doc = model(sentence)
     entity = sorted(doc.ents)
     return entity[0]
 
@@ -357,16 +358,24 @@ def extract_questions(paragraph,num_of_questions):
     (clean_sentences, sentences) = pre_process(paragraph)
     ranked_sentences = rank_sentence(clean_sentences)
     mcqs = []
+    if num_of_questions > len(ranked_sentences):
+        num_of_questions = len(ranked_sentences) #flooring num_of_questions value if > than ranked_sentence length
+
     for (i, sent) in enumerate(ranked_sentences):
         if i == int(num_of_questions):
             break
         else:
-            doc = nlp(sentences[sent[0]])
-            entity = sorted(doc.ents)
-            if(len(entity)==0): continue
-            else:
-            	sent = addTargetToken(str(entity[0]), sentences[sent[0]])
+            # doc = nlp(sentences[sent[0]])
+            # entity = sorted(doc.ents)
+            ent = get_keyword(sentences[sent[0]], nlp)   #extract Entity
+            try:
+            	sent = addTargetToken(str(ent), sentences[sent[0]])
             	mcqs.append(getMCQ(sent))
+            except IndexError:
+                if((num_of_questions+1)<len(ranked_sentences)): 
+                    num_of_questions+=1          # Ignoring sentence without entity, so incrementing i consider another sentence
+                continue
+
 
     return mcqs
 
