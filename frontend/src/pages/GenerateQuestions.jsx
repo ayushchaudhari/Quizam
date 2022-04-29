@@ -30,7 +30,7 @@ export function GenerateQuestions() {
           <div className='content__input'>
             <label>
                 <textarea name="text__inp" id="text_input" cols="80" rows="15" placeholder='Input Paragraph' className='text__inp'></textarea>
-                <input type="number" name="num__inp" id="num_input" placeholder='Number of Questions?' className='num__inp' min="1"></input>
+                <input type="number" name="num__inp" id="num_input" placeholder='Enter number of questions' className='num__inp' min="1"></input>
             </label>
           </div>
           <button className='generate__btn' onClick={() => req2()}>Generate</button>
