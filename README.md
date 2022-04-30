@@ -1,70 +1,67 @@
- Getting Started with Create React App
+<div align="center">
+    <h1>Quizam</h1>
+  Automatic Question Generation WebApp
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Quizam 
 
-In the project directory, you can run:
+- Generate Question and Answers automatically with a context within few minutes
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## TechStack Used :
+ * FrontEnd -
+    * ReactJS
+    * React Router Dom v6
+    * CSS
+* Backend - 
+    * Flask
+    * Python
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Installation :
+1. Clone the repo on to your local machine.
+2. Navigate to `frontend/src` and run this command in the terminal -
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - <mark style="background-color: orange; padding: 3px; border-radius: 3px">npm i</mark> - This will install all the dependencies required for the frontend
 
-### `npm run build`
+3. Now, navigate back to root directory and run this command in the terminal - 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - <mark style="background-color: orange; padding: 3px; border-radius: 3px">pip install -r requirements.txt</mark> - This will install all the dependencies required for the backend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Now, navigate accordingly to run the webapp - 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - For FrontEnd :
 
-### `npm run eject`
+        - Navigate to `frontend/src` and run the command 
+        <mark style="background-color: orange; padding: 3px; border-radius: 3px">
+            npm start 
+         </mark>
+        - This will start localhost server on port 3000
+    
+    - For BackEnd :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        - Navigate to `backend` and run the command 
+        <mark style="background-color: orange; padding: 3px; border-radius: 3px">FLASK_APP="app.py" flask run </mark>
+        - This will initilize the backend Flask Server on localhost port 5000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Now you can head to browser's localhost:3000 or click [here](http://localhost:3000)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Developer's Contact :
+- Ayush Chaudhari :
+    - [Github](https://github.com/ayushchaudhari)
+    - [LinkedIn](https://www.linkedin.com/in/ayush-chaudhari/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- NarendraGuru :
+    - [Github](https://github.com/narenguru2000)
+    - [LinkedIn](https://www.linkedin.com/in/narendraguru-harikrishnan-a57bb6218/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Samrudh Uchil :
+    - [Github](https://github.com/samrudhuchil)
+    - [LinkedIn](https://www.linkedin.com/in/samrudhuchil/)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Pavan Kulkarni :
+    - [Github](https://github.com/pavan6115)
+    - [Twitter](https://twitter.com/_kpavan)
