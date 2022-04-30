@@ -23,24 +23,43 @@
 1. Clone the repo on to your local machine.
 2. Navigate to `frontend/src` and run this command in the terminal -
 
+<<<<<<< HEAD
     - `npm i` - This will install all the dependencies required for the frontend
 
 3. Now, navigate back to root directory and run this command in the terminal - 
 
     - `pip install -r requirements.txt` - This will install all the dependencies required for the backend
+=======
+    - <mark style="background-color: orange; padding: 3px; border-radius: 3px">npm i</mark> - This will install all the dependencies required for the frontend
+
+3. Now, navigate back to root directory and run this command in the terminal - 
+
+    - <mark style="background-color: orange; padding: 3px; border-radius: 3px">pip install -r requirements.txt</mark> - This will install all the dependencies required for the backend
+>>>>>>> d722ab709a1bd92ee23910ba163fb0478000f43d
 
 4. Now, navigate accordingly to run the webapp - 
 
     - For FrontEnd :
 
         - Navigate to `frontend/src` and run the command 
+<<<<<<< HEAD
         `npm start`
+=======
+        <mark style="background-color: orange; padding: 3px; border-radius: 3px">
+            npm start 
+         </mark>
+>>>>>>> d722ab709a1bd92ee23910ba163fb0478000f43d
         - This will start localhost server on port 3000
     
     - For BackEnd :
 
         - Navigate to `backend` and run the command 
+<<<<<<< HEAD
         `FLASK_APP="app.py" flask run` - This will initilize the backend Flask Server on localhost port 5000
+=======
+        <mark style="background-color: orange; padding: 3px; border-radius: 3px">FLASK_APP="app.py" flask run </mark>
+        - This will initilize the backend Flask Server on localhost port 5000
+>>>>>>> d722ab709a1bd92ee23910ba163fb0478000f43d
 
 
 5. Now you can head to browser's localhost:3000 or click [here](http://localhost:3000)
