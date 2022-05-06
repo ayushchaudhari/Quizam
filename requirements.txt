@@ -1,5 +1,5 @@
 nltk==3.4.5
-torch==1.11.0
+torch @ https://download.pytorch.org/whl/cpu/torch-1.9.1%2Bcpu-cp38-cp38-linux_x86_64.whl
 numpy==1.22.3
 pandas==1.4.2
 tqdm==4.64.0
@@ -9,7 +9,7 @@ networkx==2.8
 spacy==3.2.4
 supwsd==1.2.9
 tabulate==0.8.9
-en-core-sci-lg @ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.0/en_core_sci_lg-0.5.0.tar.gz
+en-core-sci-md @ https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.0/en_core_sci_md-0.5.0.tar.gz
 
 
 aniso8601==9.0.1
